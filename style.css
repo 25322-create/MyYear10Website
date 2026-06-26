@@ -1,80 +1,217 @@
-/* A simple css reset */
-body,
-html {
+/* ========================================================================== */
+/* BASE STYLES & BACKGROUND AESTHETIC                                         */
+/* ========================================================================== */
+body, html {
     margin: 0;
     padding: 0;
     height: 100%;
-    /* The Font Family- Really important!! */
-    font-family: Arial, sans-serif;
+    /* Modern, clean font stack */
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     box-sizing: border-box;
+    /* Beautiful Dark Mode Gradient */
+    background: linear-gradient(135deg, #141e30 0%, #243b55 100%);
+    background-attachment: fixed; /* Keeps the gradient smooth when scrolling */
+    color: white; /* Default text color */
 }
 
-/* reset for images to ensure they ar 100% of the parent container width */
 img {
     width: 100%;
 }
 
-/* The hero section styling- use your OWN Hero Image URL here */
+/* ========================================================================== */
+/* HERO SECTION                                                               */
+/* ========================================================================== */
 .hero {
-    background-image: url('images/techquitybanner-1130x160.png');
-    height: 25vh;
+    background-image: url('images/Headline\ Page.png');
+    height: 35vh;
     background-size: cover;
     background-position: center;
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
-    color: white;
-    text-align: center;
-    position: relative;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-/* BIG text styling for the hero section text */
+/* Adds a dark tint over the image so the white text is always readable */
+.hero-overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .hero-text {
     font-size: 4em;
-    font-weight: bold;
-}
-
-/* nice big font on a banner style background */
-.topic-title{
-    color: white;
-    font-size: 2em;
-    padding: 0.1em 3em;
-    background-color: rgb(71, 71, 71);
-}
-
-/* Three column grid with a nice big gap */
-.topic-content{
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6em;
-    /* bring the whole section in off the sides of the page */
-    width: 70%;
-    /* top margin of 3em and center right/left */
-    margin: 3em auto;
-}
-
-/* Styling for the individual topic cards rounded edges background color and a drop shadow */
-.topic-card{
-    background-color: rgb(71, 71, 71);
-    color: white;
-    padding: 1em;
-    border-radius: 0.5em;
-    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.2);
-}
-
-/* Styling for the topic card titles */
-.topic-card-text{
-    font-size: 1.5em;
-    margin-bottom: 0.5em;
-    /* center align text */
+    font-weight: 900;
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+    margin: 0;
     text-align: center;
+    letter-spacing: 2px;
 }
 
+/* ========================================================================== */
+/* COLORFUL TAB NAVIGATION                                                    */
+/* ========================================================================== */
+/* ========================================================================== */
+/* COLORFUL TAB NAVIGATION                                                    */
+/* ========================================================================== */
+.tab-container {
+    display: flex;
+    justify-content: center;
+    gap: 1.2em;
+    margin-top: 3em;
+    margin-bottom: 2em;
+}
 
-/* Styling for a footer section to take a bit of spcae at the bottom of the page */
-.footer{
-    background-color: rgb(71, 71, 71);
+/* Default Tab Styling - Sleeker Pill Shape & Premium Glass Look */
+.tab-button {
+    background-color: rgba(255, 255, 255, 0.05); /* Subtle dark glass */
+    color: #a0aec0; /* Soft grey text so active tab pops more */
+    border: 1px solid rgba(255, 255, 255, 0.1); /* Soft border */
+    border-radius: 30px; /* Clean pill shape */
+    padding: 10px 26px;
+    font-size: 1.05em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    backdrop-filter: blur(10px);
+}
+
+/* Universal hover effect - slight lift and brightens text */
+.tab-button:hover {
     color: white;
-    text-align: right;
-    padding: 3em 3em;
+    background-color: rgba(255, 255, 255, 0.12);
+    transform: translateY(-2px);
+}
+
+/* Perfect Mix: Transparent glass background blended with a glowing neon accent */
+.tab-red.active { 
+    color: #ff4d7d; 
+    border-color: #ff0044; 
+    background-color: rgba(255, 0, 68, 0.15); /* Soft red glass tint */
+    box-shadow: 0 0 20px rgba(255, 0, 68, 0.3); 
+}
+
+.tab-blue.active { 
+    color: #4da3ff; 
+    border-color: #0077ff; 
+    background-color: rgba(0, 119, 255, 0.15); /* Soft blue glass tint */
+    box-shadow: 0 0 20px rgba(0, 119, 255, 0.3); 
+}
+
+.tab-green.active { 
+    color: #4dff88; 
+    border-color: #00cc44; 
+    background-color: rgba(0, 204, 68, 0.15); /* Soft green glass tint */
+    box-shadow: 0 0 20px rgba(0, 204, 68, 0.3); 
+}
+
+/* Fading effect for when you click a tab */
+.tab-content {
+    display: none;
+    animation: fadeEffect 0.6s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* Default Tab Styling */
+.topic-card img, .topic-card video {
+    width: 100%;          /* Changed from auto to 100% to snap it to the card width */
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;  /* Keeps the video from stretching or distorting */
+    background-color: #ffffff;
+    padding: 10px; 
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+    box-sizing: border-box; /* Prevents the 10px padding from making it too wide */
+}
+
+/* Specific Active/Hover Colors for Each Tab */
+.tab-red.active, .tab-red:hover { background-color: #ff0044; color: white; box-shadow: 0 0 15px rgba(255, 0, 68, 0.5); }
+.tab-blue.active, .tab-blue:hover { background-color: #0077ff; color: white; box-shadow: 0 0 15px rgba(0, 119, 255, 0.5); }
+.tab-green.active, .tab-green:hover { background-color: #00cc44; color: white; box-shadow: 0 0 15px rgba(0, 204, 68, 0.5); }
+
+/* Fading effect for when you click a tab */
+.tab-content {
+    display: none;
+    animation: fadeEffect 0.6s ease-in-out;
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
+}
+
+/* ========================================================================== */
+/* TOPIC CARDS                                                                */
+/* ========================================================================== */
+.topic-content {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 2.5em;
+    width: 85%;
+    max-width: 1200px;
+    margin: 0 auto 5em auto;
+}
+
+/* The Dark Grey Card Base */
+.topic-card {
+    background-color: #2c2f33; /* Slightly lighter dark grey to stand off the background */
+    padding: 2em 1.5em 1em 1.5em;
+    border-radius: 1.2em;
+    box-shadow: 0px 15px 25px rgba(0, 0, 0, 0.3);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
+}
+
+/* Colorful Hover Effects for Cards */
+.card-red:hover { transform: translateY(-12px); box-shadow: 0px 20px 35px rgba(255, 0, 68, 0.3); }
+.card-blue:hover { transform: translateY(-12px); box-shadow: 0px 20px 35px rgba(0, 119, 255, 0.3); }
+.card-green:hover { transform: translateY(-12px); box-shadow: 0px 20px 35px rgba(0, 204, 68, 0.3); }
+
+/* Keep the images uniform */
+.topic-card img {
+    width: auto;
+    max-width: 100%;
+    height: 180px;
+    object-fit: contain;
+    background-color: #ffffff;
+    padding: 10px; /* Gives the image a nice little white frame */
+    border-radius: 8px;
+    margin-bottom: 1.5em;
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+}
+
+.topic-card-text {
+    font-family: 'Arial Black', Impact, sans-serif;
+    font-size: 1.8em;
+    color: white;
+    margin: 0;
+    text-align: center;
+    letter-spacing: 1px;
+}
+
+/* ========================================================================== */
+/* FOOTER STYLING                                                             */
+/* ========================================================================== */
+.footer {
+    background-color: #0f1722; /* Matches the dark aesthetic */
+    color: #8892b0;
+    text-align: center;
+    padding: 2em;
+    font-size: 0.9em;
+    border-top: 1px solid rgba(255,255,255,0.05);
 }
